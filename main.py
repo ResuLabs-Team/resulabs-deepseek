@@ -4,14 +4,14 @@ import torch
 
 app = FastAPI()
 
-# Load the DeepSeek Chat 1.3B model
-MODEL_NAME = "deepseek-ai/deepseek-chat-1.3b"
+# Load the DeepSeek VL 1.3B Chat model
+MODEL_NAME = "deepseek-ai/deepseek-vl-1.3b-chat"
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, torch_dtype=torch.float16)
 
 @app.get("/")
 def read_root():
-    return {"message": "DeepSeek Chat 1.3B is running!"}
+    return {"message": "DeepSeek VL 1.3B Chat is running!"}
 
 @app.post("/generate/")
 def generate_text(prompt: str):
